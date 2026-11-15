@@ -1,0 +1,22 @@
+[
+    {
+        "patient_id": 1,
+        "name": "홍길동",
+        "birth_year": 2000,
+        "gender": "남",
+        "height": 175,
+        "weight": 70,
+        "bmi": 22.86,
+        "obesity_status": "정상"
+    },
+    {
+        "patient_id": 2,
+        "name": "김철수",
+        "birth_year": 2002,
+        "gender": "남",
+        "height": 180,
+        "weight": 80,
+        "bmi": 24.69,
+        "obesity_status": "정상"
+    }
+]
