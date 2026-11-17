@@ -1,22 +1,22 @@
 [
     {
         "patient_id": 1,
-        "name": "홍길동",
-        "birth_year": 2000,
+        "name": "김기범",
+        "birth_year": 2007,
         "gender": "남",
-        "height": 175,
+        "height": 176,
         "weight": 70,
-        "bmi": 22.86,
-        "obesity_status": "정상"
+        "bmi": 23.4,
+        "obesity_status": "과체중"
     },
     {
         "patient_id": 2,
-        "name": "김철수",
-        "birth_year": 2002,
+        "name": "최민호",
+        "birth_year": 2001,
         "gender": "남",
-        "height": 180,
-        "weight": 80,
-        "bmi": 24.69,
-        "obesity_status": "정상"
+        "height": 172,
+        "weight": 79,
+        "bmi": 26.4,
+        "obesity_status": "비만"
     }
 ]
