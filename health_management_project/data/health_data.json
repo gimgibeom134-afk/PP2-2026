@@ -5,9 +5,9 @@
         "birth_year": 2007,
         "gender": "남",
         "height": 176,
-        "weight": 70,
-        "bmi": 23.4,
-        "obesity_status": "과체중"
+        "weight": 80,
+        "bmi": 25.83,
+        "obesity_status": "비만"
     },
     {
         "patient_id": 2,
@@ -16,7 +16,7 @@
         "gender": "남",
         "height": 172,
         "weight": 79,
-        "bmi": 26.4,
+        "bmi": 26.7,
         "obesity_status": "비만"
     }
 ]

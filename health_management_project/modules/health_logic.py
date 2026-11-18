@@ -3,6 +3,7 @@
 파일명: health_logic.py
 설명: 건강정보 관리 및 통계 기능
 """
+import statistics
 
 class HealthManager:
 
@@ -22,24 +23,6 @@ class HealthManager:
 
         # 해당 ID가 없으면 None 반환
         return None
-
-    def update_health(self, patient_id, height=None, weight=None):
-        # 수정할 환자 검색
-        health_data = self.find_health(patient_id)
-
-        # 환자가 없으면 수정 실패
-        if health_data is None:
-            return False
-
-        # 키 수정
-        if height is not None:
-            health_data.height = height
-
-        # 몸무게 수정
-        if weight is not None:
-            health_data.weight = weight
-
-        return True
 
     def calculate_bmi(self, height, weight):
         # 키를 cm에서 m로 변환
@@ -118,20 +101,6 @@ class HealthManager:
         # 중복 정보가 없으면 False 반환
         return False
 
-    def add_health(self, health_data):
-        # 중복 환자 확인
-        if self.check_duplicate(
-            health_data.name,
-            health_data.birth_year,
-            health_data.gender
-        ):
-            return False
-
-        # 중복이 없으면 리스트에 추가
-        self.health_list.append(health_data)
-
-        return True
-
     def validate_health(self, name, birth_year, height, weight):
         # 이름 확인
         if not name:
@@ -169,6 +138,17 @@ class HealthManager:
         ):
             return False
 
+          # BMI 자동 계산
+        health_data.bmi = self.calculate_bmi(
+            health_data.height,
+            health_data.weight
+        )
+
+        # 비만도 자동 판정
+        health_data.obesity_status = self.check_obesity(
+            health_data.bmi
+        )
+
         # 건강정보 추가
         self.health_list.append(health_data)
 
@@ -198,6 +178,30 @@ class HealthManager:
             result.append(health_data)
 
         return result
+
+    def get_statistics(self):
+        # 전체 환자 정보 가져오기
+        total = len(self.health_list)
+
+        # 등록된 환자가 없으면 빈 결과 반환
+        if total == 0:
+            return None
+
+        # 키, 몸무게, BMI 데이터 추출
+        heights = [data.height for data in self.health_list]
+        weights = [data.weight for data in self.health_list]
+        bmis = [data.bmi for data in self.health_list]
+
+        # 통계 결과 반환
+        return {
+            "total": total,
+            "avg_height": round(statistics.mean(heights), 2),
+            "avg_weight": round(statistics.mean(weights), 2),
+            "avg_bmi": round(statistics.mean(bmis), 2),
+            "std_height": round(statistics.stdev(heights), 2) if total >= 2 else 0,
+            "std_weight": round(statistics.stdev(weights), 2) if total >= 2 else 0,
+            "std_bmi": round(statistics.stdev(bmis), 2) if total >= 2 else 0
+        }
 
 
 
