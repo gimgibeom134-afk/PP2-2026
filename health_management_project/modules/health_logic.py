@@ -1,7 +1,7 @@
 """
 프로젝트명: 건강관리 프로그램
 파일명: health_logic.py
-설명: 건강정보 관리 및 통계 기능
+설명: 핵심 비즈니스 규칙 및 CRUD
 """
 import statistics
 
